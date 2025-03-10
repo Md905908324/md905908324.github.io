@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+# Welcome to My Portfolio
 
-You can use the [editor on GitHub](https://github.com/Md905908324/2022-Final-Website-Project/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Hi, I'm Matthew Ding, a business student and aspiring entrepreneur with a passion for startups, AI, and data science. I am currently working on projects that focus on enhancing social networking and event planning. Feel free to browse my portfolio and check out my resume.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## My Resume
 
-### Markdown
+You can download my resume [here](./resume.pdf).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Portfolio
 
-```markdown
-Syntax highlighted code block
+Below are some of the projects I've worked on:
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Md905908324/2022-Final-Website-Project/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- [NoSpendy](https://github.com//Md905908324/NoSpendy - A saving competition app (front end).

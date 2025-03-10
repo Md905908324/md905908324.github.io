@@ -19,7 +19,7 @@ Below are some of the projects I've worked on:
 
 ## 📫 Contact Me
 - **Email:** myd2011@stern.nyu.edu  
-- **LinkedIn:** [linkedin.com/in/matthewding](https://www.linkedin.com/in/mattyding)
+- **LinkedIn:** [linkedin.com/in/mattyding](https://www.linkedin.com/in/mattyding)
 
 ---
 

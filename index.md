@@ -9,7 +9,7 @@ Hi, I'm **Matthew Ding**, a Finance and Data Science student at NYU Stern, passi
 
 ## My Resume
 
-You can download my resume [here](./resume.pdf).
+You can download my resume [here](./Matthew-Ding-Resume.pdf).
 
 ## Portfolio
 

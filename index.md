@@ -1,5 +1,3 @@
-# Welcome to My Portfolio
-
 Hi, I'm **Matthew Ding**, a Finance and Data Science student at NYU Stern, passionate about startups, fintech, and digital healthcare. With experience in business development, logistics, and technical projects, I thrive in fast-paced environments.
 
 ## About Me
@@ -15,7 +13,7 @@ You can download my resume [here](./Matthew-Ding-Resume.pdf).
 
 Below are some of the projects I've worked on:
 
-- [NoSpendy](https://github.com//Md905908324/NoSpendy - A saving competition app (front end).
+- [NoSpendy](https://github.com//Md905908324/NoSpendy) - A saving competition app (front end).
 
 ## 📫 Contact Me
 - **Email:** myd2011@stern.nyu.edu  

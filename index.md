@@ -1,4 +1,5 @@
-Hi, I'm **Matthew Ding**, a Finance and Data Science student at NYU Stern, passionate about startups, fintech, and digital healthcare. With experience in business development, logistics, and technical projects, I thrive in fast-paced environments.
+## Welcome to My Portfolio
+Hi, I'm **Matthew Ding**, a Finance and Data Science student at NYU Stern, expected to graduate in late 2027 - early 2028. I'm passionate about startups, fintech, and digital healthcare. With experience in business development, logistics, and technical projects, I thrive in fast-paced environments.
 
 ## About Me
 - **Current Role:** Business Development Associate at Acrynoto

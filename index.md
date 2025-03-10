@@ -13,7 +13,7 @@ You can download my resume [here](./Matthew-Ding-Resume.pdf).
 
 Below are some of the projects I've worked on:
 
-- [NoSpendy](https://github.com//Md905908324/NoSpendy) - A saving competition app (front end).
+- [NoSpendy](https://github.com//Md905908324/NoSpendy) - A saving competition app (front end). Achieved finalist in NYU Startup Week Buildathon 2025.
 
 ## 📫 Contact Me
 - **Email:** myd2011@stern.nyu.edu  

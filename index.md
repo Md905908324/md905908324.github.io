@@ -11,13 +11,15 @@ Hi, I'm **Matthew Ding**, a Finance and Data Science student at NYU Stern, expec
 
 ## My Resume
 
-You can download my resume [here](./Matthew-Ding-Resume.pdf).
+You can download my resume [here](./Matthew_Ding_Resume_V1.4.pdf).
 
 ## Portfolio
 
 Below are some of the projects I've worked on:
 
 - [NoSpendy](https://github.com//Md905908324/NoSpendy) - A saving competition app (front end). Achieved finalist in NYU Startup Week Buildathon 2025.
+- [CampusSync](https://github.com/Md905908324/hofhack25) - A campus event calendar app for HOF Hacks using Vercel.
+- Miscellaneous EDA, ML, and other data analytics work available in my public repos.
 
 ## 📫 Contact Me
 - **Email:** myd2011@stern.nyu.edu  

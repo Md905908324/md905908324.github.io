@@ -22,54 +22,60 @@ body {
 header {
     background-color: #4C9F70;
     color: white;
-    padding: 60px 0;
+    padding: 50px 0;
     text-align: center;
 }
 
 header h1 {
-    font-size: 3em;
-    margin-bottom: 15px;
-}
-
-header h1 span {
-    color: #f2b200;
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 header p {
     font-size: 1.2em;
-    font-weight: 400;
 }
 
-/* Sections */
-section {
-    padding: 60px 0;
+/* Two-Column Layout */
+.two-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px 0;
 }
 
+.left-column, .right-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Section Titles */
 h2 {
-    font-size: 2.5em;
-    margin-bottom: 25px;
-    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
     color: #333;
 }
 
+/* Lists */
 ul {
     list-style-type: none;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 li {
-    font-size: 1.1em;
-    margin-bottom: 10px;
+    font-size: 1.05em;
+    margin-bottom: 8px;
 }
 
-/* Experience & Projects */
+/* Jobs & Projects */
 .job, .project {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .job h3, .project h3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     color: #4C9F70;
+    margin-bottom: 5px;
 }
 
 .job h3 em {
@@ -87,20 +93,20 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Resume Button */
-#resume .btn {
+/* Buttons */
+.btn {
     display: inline-block;
     background-color: #4C9F70;
     color: white;
-    padding: 12px 25px;
-    text-decoration: none;
-    font-size: 1.2em;
+    padding: 10px 20px;
     border-radius: 5px;
-    margin-top: 20px;
+    text-decoration: none;
+    font-size: 1.1em;
+    margin-top: 15px;
     transition: 0.3s;
 }
 
-#resume .btn:hover {
+.btn:hover {
     background-color: #f2b200;
 }
 
@@ -109,9 +115,16 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 25px 0;
+    padding: 20px 0;
 }
 
 footer p {
     font-size: 1em;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .two-column {
+        flex-direction: column;
+    }
 }

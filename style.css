@@ -20,7 +20,7 @@ body {
 
 /* Header */
 header {
-    background-color: #4C9F70;
+    background-color: #0096FF;
     color: white;
     padding: 50px 0;
     text-align: center;
@@ -74,7 +74,7 @@ li {
 
 .job h3, .project h3 {
     font-size: 1.3em;
-    color: #4C9F70;
+    color: #0096FF;
     margin-bottom: 5px;
 }
 
@@ -85,7 +85,7 @@ li {
 
 /* Links */
 a {
-    color: #4C9F70;
+    color: #0096FF;
     text-decoration: none;
 }
 
@@ -96,7 +96,7 @@ a:hover {
 /* Buttons */
 .btn {
     display: inline-block;
-    background-color: #4C9F70;
+    background-color: #0096FF;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;

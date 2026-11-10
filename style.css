@@ -1,40 +1,40 @@
 :root {
-  --green: #245743;
-  --text: #27362f;
-  --muted: #5c6b62;
-  --border: #dce4dd;
+  --primary: #2563eb;
+  --text: #1f2937;
+  --muted: #64748b;
+  --border: #e2e8f0;
 }
 * { box-sizing: border-box; }
-html { scroll-padding-top: 24px; }
+html { scroll-padding-top: 90px; scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: #fafcf9;
+  background: #f5f7fb;
   color: var(--text);
   font: 15px/1.7 Arial, Helvetica, sans-serif;
 }
-.container { width: min(900px, calc(100% - 40px)); margin-inline: auto; }
-a { color: var(--green); text-underline-offset: 3px; }
+.container { width: min(1040px, calc(100% - 40px)); margin-inline: auto; }
+a { color: var(--primary); text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
-a:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
-header { padding-top: 48px; }
-h1 { color: var(--green); font-size: 36px; line-height: 1.2; margin: 0 0 8px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+.profile-header { padding-block: 42px 30px; }
+h1 { color: var(--primary); font-size: 36px; line-height: 1.2; margin: 0 0 8px; }
 .subtitle { font-size: 18px; margin: 0 0 8px; }
-header > p:not(.subtitle) { color: var(--muted); margin: 0 0 16px; }
+.profile-header > p:not(.subtitle) { color: var(--muted); margin: 0 0 16px; }
 .contact-links, nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
 .contact-links { margin-bottom: 28px; }
 nav { border-block: 1px solid var(--border); padding-block: 13px; font-size: 14px; }
 nav a { text-decoration: none; }
-section { padding-top: 34px; }
-h2 { font-size: 23px; color: var(--green); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin: 0 0 20px; }
+section { padding-top: 38px; }
+h2 { font-size: 23px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin: 0 0 20px; }
 h3 { font-size: 16px; line-height: 1.5; margin: 0 0 5px; }
 p { margin: 0 0 12px; }
 ul { padding-left: 19px; margin: 8px 0 18px; }
 li { padding-left: 2px; margin-bottom: 5px; }
 .experience-row { margin-bottom: 24px; }
 .date { float: right; margin: 0 0 5px 20px; color: var(--muted); font-size: 12px; }
-.role { color: var(--green); margin-bottom: 4px; font-size: 14px; }
+.role { color: var(--primary); margin-bottom: 4px; font-size: 14px; }
 .previous-role { color: var(--muted); font-size: 12px; }
-summary { cursor: pointer; color: var(--green); font-size: 14px; }
+summary { cursor: pointer; color: var(--primary); font-size: 14px; }
 .earlier { margin-bottom: 5px; }
 .earlier p { margin-top: 12px; font-size: 14px; }
 .project-grid, .additional-grid, .toolkit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 32px; }
@@ -46,17 +46,67 @@ summary { cursor: pointer; color: var(--green); font-size: 14px; }
 .competition-row h3 { font-size: 14px; margin: 0; }
 .competition-row p { color: var(--muted); font-size: 13px; margin: 3px 0 0; }
 .badge { font-size: 12px; color: var(--muted); white-space: nowrap; }
-.winner { color: var(--green); font-weight: bold; }
+.winner { color: var(--primary); font-weight: bold; }
 .toolkit-grid p { font-size: 14px; color: var(--muted); }
 footer { border-top: 1px solid var(--border); margin-top: 36px; padding-block: 18px; color: var(--muted); font-size: 12px; }
 .skip-link { position: absolute; top: -80px; left: 20px; background: white; padding: 8px; }
 .skip-link:focus { top: 8px; }
 @media (max-width: 600px) {
-  header { padding-top: 30px; }
+  .profile-header { padding-block: 30px 20px; }
   h1 { font-size: 30px; }
   .subtitle { font-size: 16px; }
   .project-grid, .additional-grid, .toolkit-grid { grid-template-columns: 1fr; gap: 23px; }
   .date { float: none; margin: 0 0 4px; }
   .competition-row { grid-template-columns: 1fr auto; gap: 5px 10px; }
   .competition-row > .mono { grid-column: 1 / -1; }
+}
+
+/* Navigation stays visible while moving between sections. */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+}
+.topbar-inner { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.site-name { color: #0f172a; font-weight: 700; text-decoration: none; font-size: 16px; white-space: nowrap; }
+.topbar nav { border: 0; padding-block: 15px; gap: 10px 22px; font-size: 13px; }
+.topbar nav a { color: #475569; }
+.topbar nav a:hover { color: var(--primary); text-decoration: underline; }
+.profile-header h1 { color: #0f172a; font-size: 40px; letter-spacing: -1px; }
+.contact-links { margin-bottom: 0; gap: 10px; }
+.contact-links a { display: inline-block; padding: 6px 13px; background: #fff; border: 1px solid #cbd5e1; border-radius: 5px; font-size: 13px; text-decoration: none; }
+.contact-links a:hover { border-color: var(--primary); background: #eff6ff; }
+main { border-top: 1px solid var(--border); }
+h2 { font-size: 23px; color: #0f172a; }
+h2::before { content: ''; display: inline-block; width: 4px; height: 20px; background: var(--primary); margin-right: 11px; vertical-align: -2px; border-radius: 2px; }
+.project-grid { gap: 20px; }
+.project-card { padding: 22px; background: #fff; border: 1px solid var(--border); border-radius: 8px; display: flex; flex-direction: column; }
+.project-card h3 { font-size: 18px; margin-bottom: 9px; }
+.project-card h3 a { text-decoration: none; }
+.project-card h3 a:hover { text-decoration: underline; }
+.project-stack { border-top: 1px solid #edf2f7; padding-top: 12px; margin-top: auto; margin-bottom: 0; color: #475569; font: 11px/1.7 Consolas, 'Courier New', monospace; }
+.project-card ul { margin-bottom: 17px; }
+.additional-grid { padding: 22px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.experience-row { padding: 22px; background: #fff; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; }
+.experience-row ul { margin-bottom: 0; }
+.competition-row { padding: 15px 0; }
+.winner { color: #1d4ed8; }
+.hobbies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; }
+.hobbies-grid p { color: var(--muted); font-size: 14px; margin-bottom: 0; }
+#hobbies { padding-bottom: 12px; }
+.skip-link { position: fixed; z-index: 20; }
+@media (max-width: 760px) {
+  html { scroll-padding-top: 130px; }
+  .topbar-inner { flex-direction: column; align-items: flex-start; gap: 0; padding-block: 12px 0; }
+  .topbar nav { padding-block: 9px 12px; gap: 8px 16px; font-size: 12px; }
+  .profile-header h1 { font-size: 32px; }
+  .project-card, .experience-row, .additional-grid { padding: 18px; }
+}
+@media (max-width: 600px) {
+  .hobbies-grid { grid-template-columns: 1fr; gap: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

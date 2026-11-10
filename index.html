@@ -3,79 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Matthew Ding — Finance and Data Science at NYU Stern. Experience, projects, and competitions.">
-  <meta name="theme-color" content="#245743">
-  <title>Matthew Ding | Portfolio</title>
+  <meta name="description" content="Matthew Yu Ding — Finance and Data Science at NYU Stern. Experience, projects, and competitions.">
+  <meta name="theme-color" content="#2563eb">
+  <title>Matthew Yu Ding | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="container">
-  <h1>m.y.ding</h1>
+<div class="topbar">
+  <div class="container topbar-inner">
+    <a class="site-name" href="#top">Matthew Yu Ding</a>
+    <nav aria-label="Main navigation">
+      <a href="#featured-projects">Projects</a><a href="#experience">Experience</a><a href="#competitions">Competitions</a><a href="#skills">Skills</a><a href="#hobbies">Hobbies</a>
+    </nav>
+  </div>
+</div>
+<header class="container profile-header" id="top">
+  <h1>Matthew Yu Ding</h1>
   <p class="subtitle">Finance &amp; Data Science at NYU Stern</p>
-  <p>New York, NY · Finance, data science, and sustainability.</p>
+  <p>New York, NY · Python, machine learning, and financial technology.</p>
   <div class="contact-links">
     <a href="mailto:matthew.ding@stern.nyu.edu">Email</a>
     <a href="https://www.linkedin.com/in/mattyding" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://github.com/Md905908324" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="Matthew_Ding_Resume_Tech.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
   </div>
-  <nav aria-label="Main navigation">
-    <a href="#about">About</a><a href="#experience">Experience</a><a href="#featured-projects">Projects</a><a href="#competitions">Competitions</a><a href="#skills">Skills</a>
-  </nav>
 </header>
 <main class="container" id="main">
 <section id="about">
 <h2>About</h2>
-<p>I’m Matthew Ding, studying Finance and AI, Computing &amp; Data Science at NYU Stern, graduating in January 2028. My interests include fintech, quantitative investing, and sustainability.</p>
+<p>I’m Matthew Yu Ding, studying Finance and AI, Computing &amp; Data Science at NYU Stern, graduating in January 2028. My interests include fintech, quantitative investing, and sustainability.</p>
 <p>I currently work on revenue forecasting and data automation at NYC’s Office of Management and Budget and support data operations and sustainability career resources at NYU Stern’s Center for Sustainable Business. I also manage systematic strategies in the Michael Price Student Investment Fund.</p>
 </section>
-<section id="experience"><h2>Experience</h2><article class="experience-row">
-<p class="mono date">Sep 2026 — Present</p>
-<h3>NYC Mayor’s Office of Management and Budget</h3>
-<p class="role">College Aide · Tax Policy, Economic Analysis &amp; Revenue Forecasting</p>
-<p class="previous-role">Previously Intern, Jun — Aug 2026</p>
-<ul>
-<li>Analyze daily and monthly revenue across 70+ tax streams using Python and SQL.</li>
-<li>Engineer a five-stage data pipeline and expand real property tax tracking across 15 components.</li>
-<li>Develop PyTorch and scikit-learn forecasting models to support NYC’s $120B+ budget.</li>
-</ul>
-</article>
-<article class="experience-row">
-<p class="mono date">Mar 2026 — Present</p>
-<h3>NYU Stern Center for Sustainable Business</h3>
-<p class="role">Administrative Intern</p>
-<ul>
-<li>Automate job scraping, URL validation, and classification for a board of 150+ monthly sustainability opportunities.</li>
-<li>Maintain structured career datasets and enrich Salesforce records to support targeted outreach.</li>
-</ul>
-</article>
-<article class="experience-row">
-<p class="mono date">May — Jul 2025</p>
-<h3>U.S. Accounting, Inc.</h3>
-<p class="role">Accounting Intern</p>
-<ul>
-<li>Support 50+ corporate clients and complete 160+ bank reconciliations.</li>
-<li>Develop VBA workflows adopted across 60%+ of clients and Python tools saving 15+ hours of weekly data entry.</li>
-</ul>
-</article><details class="earlier">
-<summary>Earlier experience</summary>
-<p>
-<strong>Acryno To · Business Development Associate</strong>
-<br>Oct 2024 — Nov 2025 · Healthcare market research, investor due diligence, and growth strategy.</p>
-<p>
-<strong>Tech@NYU · Mentorship Program</strong>
-<br>Feb — May 2025 · Full-stack development for Real LFG.</p>
-<p>
-<strong>NYU Stern Fubon Center · Office Assistant</strong>
-<br>Oct 2024 — May 2025 · Event logistics, outreach, and operations.</p>
-<p>
-<strong>NYU Coaching & Technology Summit · Student Host</strong>
-<br>Jun 2026 · Speaker logistics and attendee operations for a two-day summit.</p>
-<p>
-<strong>Project Destined · Real Estate Private Equity Program</strong>
-<br>Mar — Apr 2026 · Multifamily underwriting, cash flow modeling, and valuation.</p>
-</details></section>
 <section id="featured-projects"><h2>Featured projects</h2><div class="project-grid"><article class="project-card" data-category="Quantitative investing">
 <h3>Systematic sub-fund</h3>
 <p class="project-intro">Manage a $950K systematic sub-fund within NYU’s Michael Price Student Investment Fund.</p>
@@ -84,6 +43,7 @@
 <li>Use FinBERT to incorporate financial-text sentiment.</li>
 <li>Evaluate strategies with a backtesting engine and portfolio risk analysis.</li>
 </ul>
+<p class="project-stack">Python · Factor models · FinBERT · Backtesting</p>
 </article>
 <article class="project-card" data-category="Quantitative investing">
 <h3>Trading the Surprise</h3>
@@ -92,6 +52,7 @@
 <li>Model equity reactions to macroeconomic surprises.</li>
 <li>Use PyTorch and time-series features to study trading signals.</li>
 </ul>
+<p class="project-stack">PyTorch · Time-series analysis · Private strategy</p>
 </article>
 <article class="project-card" data-category="Financial products">
 <h3><a href="https://github.com/Md905908324/Proof_Credit" target="_blank" rel="noopener noreferrer">Proof Credit</a></h3>
@@ -100,6 +61,7 @@
 <li>Prototype undercollateralized lending with private credit verification.</li>
 <li>Build wallet sessions, risk-scoring flows, and borrower/lender dashboards.</li>
 </ul>
+<p class="project-stack">Full-stack development · Wallet sessions · Credit verification</p>
 </article>
 <article class="project-card" data-category="Financial products">
 <h3><a href="https://github.com/Md905908324/NoSpendy" target="_blank" rel="noopener noreferrer">NoSpendy</a></h3>
@@ -108,6 +70,7 @@
 <li>Build expense tracking, budgets, and savings competitions.</li>
 <li>Connect authentication, financial data, and a social leaderboard.</li>
 </ul>
+<p class="project-stack">React · Node.js · Express · MongoDB</p>
 </article>
 <article class="project-card" data-category="Data &amp; automation">
 <h3><a href="https://github.com/Md905908324/document_filler_app" target="_blank" rel="noopener noreferrer">Document Filler</a></h3>
@@ -116,6 +79,7 @@
 <li>Parse Excel data into Word and PDF templates with Python.</li>
 <li>Reduce repetitive preparation for corporate and tax forms.</li>
 </ul>
+<p class="project-stack">Python · Excel · Word/PDF automation</p>
 </article>
 <article class="project-card" data-category="Data &amp; automation">
 <h3><a href="https://github.com/Md905908324/acctg_excel_macros" target="_blank" rel="noopener noreferrer">Excel Macros</a></h3>
@@ -124,6 +88,7 @@
 <li>Streamline payroll extraction and ICESA formatting.</li>
 <li>Automate UI/PFML filings and batch client communications.</li>
 </ul>
+<p class="project-stack">Excel VBA · Payroll · Tax workflows</p>
 </article></div></section>
 <section id="additional-projects"><h2>Other projects</h2><div class="additional-grid">
 <article>
@@ -170,6 +135,52 @@
 </ul>
 </article>
 </div></section>
+<section id="experience"><h2>Experience</h2><article class="experience-row">
+<p class="mono date">Sep 2026 — Present</p>
+<h3>NYC Mayor’s Office of Management and Budget</h3>
+<p class="role">College Aide · Tax Policy, Economic Analysis &amp; Revenue Forecasting</p>
+<p class="previous-role">Previously Intern, Jun — Aug 2026</p>
+<ul>
+<li>Analyze daily and monthly revenue across 70+ tax streams using Python and SQL.</li>
+<li>Engineer a five-stage data pipeline and expand real property tax tracking across 15 components.</li>
+<li>Develop PyTorch and scikit-learn forecasting models to support NYC’s $120B+ budget.</li>
+</ul>
+</article>
+<article class="experience-row">
+<p class="mono date">Mar 2026 — Present</p>
+<h3>NYU Stern Center for Sustainable Business</h3>
+<p class="role">Administrative Intern</p>
+<ul>
+<li>Automate job scraping, URL validation, and classification for a board of 150+ monthly sustainability opportunities.</li>
+<li>Maintain structured career datasets and enrich Salesforce records to support targeted outreach.</li>
+</ul>
+</article>
+<article class="experience-row">
+<p class="mono date">May — Jul 2025</p>
+<h3>U.S. Accounting, Inc.</h3>
+<p class="role">Accounting Intern</p>
+<ul>
+<li>Support 50+ corporate clients and complete 160+ bank reconciliations.</li>
+<li>Develop VBA workflows adopted across 60%+ of clients and Python tools saving 15+ hours of weekly data entry.</li>
+</ul>
+</article><details class="earlier">
+<summary>Earlier experience</summary>
+<p>
+<strong>Acryno To · Business Development Associate</strong>
+<br>Oct 2024 — Nov 2025 · Healthcare market research, investor due diligence, and growth strategy.</p>
+<p>
+<strong>Tech@NYU · Mentorship Program</strong>
+<br>Feb — May 2025 · Full-stack development for Real LFG.</p>
+<p>
+<strong>NYU Stern Fubon Center · Office Assistant</strong>
+<br>Oct 2024 — May 2025 · Event logistics, outreach, and operations.</p>
+<p>
+<strong>NYU Coaching &amp; Technology Summit · Student Host</strong>
+<br>Jun 2026 · Speaker logistics and attendee operations for a two-day summit.</p>
+<p>
+<strong>Project Destined · Real Estate Private Equity Program</strong>
+<br>Mar — Apr 2026 · Multifamily underwriting, cash flow modeling, and valuation.</p>
+</details></section>
 <section id="competitions"><h2>Competitions</h2><article class="competition-row">
 <span class="mono">Nov 2026</span>
 <div>
@@ -228,23 +239,32 @@
 </article></section>
 <section id="skills"><h2>Skills &amp; education</h2><div class="toolkit-grid">
 <div>
-<h3>Code & data</h3>
+<h3>Code &amp; data</h3>
 <p>Python · SQL · pandas · NumPy · PyTorch · scikit-learn · Databricks · Git</p>
 </div>
 <div>
-<h3>Markets & models</h3>
+<h3>Markets &amp; models</h3>
 <p>Factor modeling · Portfolio construction · Backtesting · Financial modeling · Valuation · Risk analysis</p>
 </div>
 <div>
-<h3>Products & operations</h3>
+<h3>Products &amp; operations</h3>
 <p>React · React Native · Node.js · MongoDB · Excel VBA · Salesforce · Workflow automation</p>
 </div>
 <div>
 <h3>Education</h3>
-<p>NYU Stern · B.S. in Business<br>Finance and AI, Computing & Data Science<br>Expected January 2028 · GPA 3.7/4.0</p>
+<p>NYU Stern · B.S. in Business<br>Finance and AI, Computing &amp; Data Science<br>Expected January 2028 · GPA 3.7/4.0</p>
 </div>
 </div></section>
+<section id="hobbies">
+<h2>Hobbies &amp; interests</h2>
+<div class="hobbies-grid">
+  <div><h3>Collecting</h3><p>Pokémon card collecting.</p></div>
+  <div><h3>Sports</h3><p>Bowling, judo, badminton, ping pong, billiards, and airsoft.</p></div>
+  <div><h3>Games</h3><p>Total War: Warhammer, Chivalry, modded Minecraft, Guild Wars 2, and Diablo.</p></div>
+  <div><h3>Tabletop</h3><p>Chess, strategy games, and board games.</p></div>
+</div>
+</section>
 </main>
-<footer class="container"><p>© 2026 Matthew Ding</p></footer>
+<footer class="container"><p>© 2026 Matthew Yu Ding</p></footer>
 </body>
 </html>

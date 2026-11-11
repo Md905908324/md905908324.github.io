@@ -10,7 +10,8 @@ const skillData = {
         "housing",
         "access",
         "omb",
-        "accounting"
+        "accounting",
+        "omb-forecast"
       ]
     },
     "factor-modeling": {
@@ -50,7 +51,8 @@ const skillData = {
       "evidence": [
         "surprise",
         "telco",
-        "omb"
+        "omb",
+        "omb-forecast"
       ]
     },
     "time-series-analysis": {
@@ -119,7 +121,8 @@ const skillData = {
         "lfgcampus",
         "omb",
         "csb",
-        "accounting"
+        "accounting",
+        "omb-forecast"
       ]
     },
     "excel-vba": {
@@ -173,7 +176,8 @@ const skillData = {
       "name": "scikit-learn",
       "evidence": [
         "telco",
-        "omb"
+        "omb",
+        "omb-forecast"
       ]
     },
     "data-analysis": {
@@ -226,7 +230,8 @@ const skillData = {
       "name": "SQL",
       "evidence": [
         "access",
-        "omb"
+        "omb",
+        "omb-forecast"
       ]
     },
     "sqlite": {
@@ -458,6 +463,12 @@ const skillData = {
       "title": "Additional finance work",
       "description": "Cash flow statements, equity research models, and investment pitches. These skills reflect reported experience; public work samples are not linked.",
       "type": "Reported experience"
+    },
+    "omb-forecast": {
+      "title": "Revenue forecasting & data pipelines",
+      "href": "#project-omb-forecast",
+      "description": "NYC OMB revenue analysis, five-stage data pipeline, and monthly tax-collection forecasting.",
+      "type": "Professional work"
     }
   }
 };
@@ -513,18 +524,26 @@ dialog.addEventListener('click', event => {
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
 });
 
-const expandButton = document.getElementById('expand-projects');
-const archiveDetails = [...document.querySelectorAll('.archive-project details')];
-expandButton.hidden = false;
-function updateExpandLabel() {
-  expandButton.textContent = archiveDetails.every(item => item.open) ? 'Collapse all' : 'Expand all';
-}
-expandButton.addEventListener('click', () => {
-  const open = !archiveDetails.every(item => item.open);
-  archiveDetails.forEach(item => { item.open = open; });
-  updateExpandLabel();
+const projectSearch = document.getElementById('project-search');
+const projectIndex = [...document.querySelectorAll('.archive-project')];
+projectSearch.addEventListener('input', () => {
+  const terms = projectSearch.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+  let count = 0;
+  for (const project of projectIndex) {
+    project.hidden = !terms.every(term => project.dataset.search.includes(term));
+    if (!project.hidden) count += 1;
+  }
+  document.getElementById('project-count').textContent = `${count} ${count === 1 ? 'project' : 'projects'}`;
+  document.getElementById('empty-projects').hidden = count !== 0;
 });
-archiveDetails.forEach(item => item.addEventListener('toggle', updateExpandLabel));
+
+// Evidence links reveal projects even when a search has filtered them out.
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href^="#project-"]');
+  if (!link) return;
+  projectSearch.value = '';
+  projectSearch.dispatchEvent(new Event('input'));
+});
 
 const navLinks = [...document.querySelectorAll('nav a')];
 const observedSections = navLinks.map(link => document.querySelector(link.hash));
@@ -545,3 +564,9 @@ window.addEventListener('scroll', () => {
   requestAnimationFrame(() => { updateNavigation(); scrollScheduled = false; });
 }, {passive: true});
 updateNavigation();
+
+// Keep the header usable if the external profile image cannot be loaded.
+const profilePhoto = document.querySelector('.profile-photo');
+function showPhotoFallback() { profilePhoto.hidden = true; }
+profilePhoto.addEventListener('error', showPhotoFallback);
+if (profilePhoto.complete && !profilePhoto.naturalWidth) showPhotoFallback();

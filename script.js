@@ -535,3 +535,82 @@ const profilePhoto = document.querySelector('.profile-photo');
 function showPhotoFallback() { profilePhoto.hidden = true; }
 profilePhoto.addEventListener('error', showPhotoFallback);
 if (profilePhoto.complete && !profilePhoto.naturalWidth) showPhotoFallback();
+
+// Draw connections from the live button positions, including the shared skills.
+const skillNetwork = document.getElementById('skill-network');
+const connectionLayer = skillNetwork.querySelector('.skill-connections');
+const skillNodes = [...skillNetwork.querySelectorAll('[data-node]')];
+const skillHubs = [...skillNetwork.querySelectorAll('[data-hub]')];
+let selectedBranch = null;
+let activeSkill = null;
+let connections = [];
+
+function highlightConnections() {
+  for (const connection of connections) {
+    const active = activeSkill ? connection.skill === activeSkill : connection.branch === selectedBranch;
+    connection.path.classList.toggle('is-active', active);
+  }
+  for (const node of skillNodes) {
+    const branch = node.dataset.branch;
+    const highlighted = activeSkill ? node.dataset.node === activeSkill : selectedBranch && (branch === selectedBranch || branch === 'shared');
+    node.classList.toggle('is-highlighted', Boolean(highlighted));
+  }
+  for (const hub of skillHubs) {
+    const activeNode = skillNodes.find(node => node.dataset.node === activeSkill);
+    const connected = activeNode && (activeNode.dataset.branch === 'shared' || activeNode.dataset.branch === hub.dataset.hub);
+    hub.classList.toggle('is-connected', Boolean(connected));
+  }
+}
+
+function drawSkillConnections() {
+  const bounds = skillNetwork.getBoundingClientRect();
+  connectionLayer.setAttribute('viewBox', `0 0 ${bounds.width} ${bounds.height}`);
+  connectionLayer.replaceChildren();
+  connections = [];
+  const stacked = getComputedStyle(skillNetwork).gridTemplateColumns.split(' ').length === 1;
+  for (const node of skillNodes) {
+    const rect = node.getBoundingClientRect();
+    const end = {x: rect.left + rect.width / 2 - bounds.left, y: rect.top + rect.height / 2 - bounds.top};
+    for (const hub of skillHubs) {
+      if (node.dataset.branch !== 'shared' && node.dataset.branch !== hub.dataset.hub) continue;
+      const hubRect = hub.getBoundingClientRect();
+      const start = {x: hubRect.left + hubRect.width / 2 - bounds.left, y: hubRect.top + hubRect.height / 2 - bounds.top};
+      const midX = (start.x + end.x) / 2;
+      const midY = (start.y + end.y) / 2;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', stacked && node.dataset.branch === 'shared'
+        ? `M ${start.x} ${start.y} C ${start.x} ${midY}, ${end.x} ${midY}, ${end.x} ${end.y}`
+        : `M ${start.x} ${start.y} C ${midX} ${start.y}, ${midX} ${end.y}, ${end.x} ${end.y}`);
+      path.classList.add('skill-connection');
+      if (node.dataset.branch === 'shared') path.classList.add('shared-connection');
+      connectionLayer.append(path);
+      connections.push({path, skill: node.dataset.node, branch: hub.dataset.hub});
+    }
+  }
+  highlightConnections();
+}
+
+for (const node of skillNodes) {
+  node.addEventListener('pointerenter', () => { activeSkill = node.dataset.node; highlightConnections(); });
+  node.addEventListener('pointerleave', () => { activeSkill = null; highlightConnections(); });
+  node.addEventListener('focus', () => { activeSkill = node.dataset.node; highlightConnections(); });
+  node.addEventListener('blur', () => { activeSkill = null; highlightConnections(); });
+}
+for (const hub of skillHubs) {
+  hub.addEventListener('click', () => {
+    selectedBranch = selectedBranch === hub.dataset.hub ? null : hub.dataset.hub;
+    activeSkill = null;
+    skillHubs.forEach(item => item.setAttribute('aria-pressed', String(item.dataset.hub === selectedBranch)));
+    document.getElementById('network-status').textContent = selectedBranch
+      ? `${selectedBranch === 'tech' ? 'Tech' : 'Finance'} and shared skills highlighted.`
+      : 'All skills shown without highlighting.';
+    highlightConnections();
+  });
+}
+let networkFrame;
+const networkObserver = new ResizeObserver(() => {
+  cancelAnimationFrame(networkFrame);
+  networkFrame = requestAnimationFrame(drawSkillConnections);
+});
+networkObserver.observe(skillNetwork);
+document.fonts.ready.then(drawSkillConnections);

@@ -758,6 +758,17 @@
 <p>Chess, strategy games, and board games.</p>
 </div>
 </div>
+<div class="gallery-easter-egg">
+<button type="button" class="gallery-trigger" id="gallery-toggle" aria-expanded="false" aria-controls="hobby-gallery">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 5 9.5 3h5L16 5h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><circle cx="12" cy="12.5" r="4"/></svg>
+<span>Off the clock</span><span class="gallery-toggle-mark" aria-hidden="true">+</span>
+</button>
+<div id="hobby-gallery" class="hobby-gallery" hidden>
+<h3>A few moments outside work.</h3>
+<p id="gallery-status" role="status" aria-live="polite">Loading photos…</p>
+<button type="button" class="gallery-retry" id="gallery-retry" hidden>Try again</button>
+<div class="gallery-grid" id="gallery-grid"></div>
+</div></div>
 </section>
 </main>
 <footer id="contact">
@@ -787,6 +798,12 @@
 <div id="skill-evidence">
 </div>
 <p class="dialog-note">Project tags describe the tools or methods used. Public links are included where available.</p>
+</dialog>
+<dialog id="photo-dialog" class="photo-dialog" aria-labelledby="photo-caption">
+<div class="photo-viewer-toolbar"><span id="photo-position" aria-live="polite"></span><button type="button" class="dialog-close" id="photo-close" aria-label="Close photo viewer">×</button></div>
+<figure><img id="gallery-full-photo" alt=""><figcaption id="photo-caption"></figcaption></figure>
+<p id="photo-error" role="status" hidden>This photo could not be loaded.</p>
+<div class="photo-navigation"><button type="button" id="photo-previous" aria-label="Previous photo">← Previous</button><button type="button" id="photo-next" aria-label="Next photo">Next →</button></div>
 </dialog>
 </body>
 </html>

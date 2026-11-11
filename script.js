@@ -614,3 +614,108 @@ const networkObserver = new ResizeObserver(() => {
 });
 networkObserver.observe(skillNetwork);
 document.fonts.ready.then(drawSkillConnections);
+
+// A folder-backed, lazy-loaded Easter egg at the end of Hobbies.
+const galleryToggle = document.getElementById('gallery-toggle');
+const hobbyGallery = document.getElementById('hobby-gallery');
+const galleryGrid = document.getElementById('gallery-grid');
+const galleryStatus = document.getElementById('gallery-status');
+const galleryRetry = document.getElementById('gallery-retry');
+const photoDialog = document.getElementById('photo-dialog');
+const fullPhoto = document.getElementById('gallery-full-photo');
+const photoError = document.getElementById('photo-error');
+let galleryPhotos = [];
+let galleryLoaded = false;
+let galleryLoading = false;
+let currentPhoto = 0;
+
+function showGalleryPhoto(index) {
+  if (!galleryPhotos.length) return;
+  currentPhoto = (index + galleryPhotos.length) % galleryPhotos.length;
+  const photo = galleryPhotos[currentPhoto];
+  photoError.hidden = true;
+  fullPhoto.hidden = false;
+  fullPhoto.alt = photo.alt;
+  document.getElementById('photo-caption').textContent = photo.alt;
+  document.getElementById('photo-position').textContent = `${currentPhoto + 1} / ${galleryPhotos.length}`;
+  document.getElementById('photo-previous').disabled = galleryPhotos.length < 2;
+  document.getElementById('photo-next').disabled = galleryPhotos.length < 2;
+  fullPhoto.src = photo.src;
+}
+
+async function loadHobbyGallery() {
+  if (galleryLoaded || galleryLoading) return;
+  galleryLoading = true;
+  galleryRetry.hidden = true;
+  galleryStatus.textContent = 'Loading photos…';
+  try {
+    const response = await fetch('assets/gallery/photos.json', {cache: 'no-cache'});
+    if (!response.ok) throw new Error('Photo index unavailable');
+    const entries = await response.json();
+    if (!Array.isArray(entries)) throw new Error('Invalid photo index');
+    const folder = new URL('assets/gallery/', document.baseURI);
+    galleryPhotos = entries.flatMap(entry => {
+      if (!entry || typeof entry.src !== 'string' || typeof entry.alt !== 'string') return [];
+      const source = new URL(entry.src, document.baseURI);
+      if (source.origin !== folder.origin || !source.pathname.startsWith(folder.pathname) || !/\.(jpe?g|png|webp|gif|avif)$/i.test(source.pathname)) return [];
+      return [{src: source.href, alt: entry.alt.trim() || 'Gallery photo'}];
+    });
+    if (entries.length && !galleryPhotos.length) throw new Error('Invalid photo entries');
+    galleryGrid.replaceChildren();
+    galleryPhotos.forEach((photo, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'gallery-thumbnail';
+      button.setAttribute('aria-haspopup', 'dialog');
+      button.setAttribute('aria-label', `View photo: ${photo.alt}`);
+      const image = document.createElement('img');
+      image.src = photo.src;
+      image.alt = photo.alt;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.addEventListener('error', () => { image.hidden = true; button.classList.add('thumbnail-unavailable'); });
+      const caption = document.createElement('span');
+      caption.textContent = photo.alt;
+      button.append(image, caption);
+      button.addEventListener('click', () => {
+        showGalleryPhoto(index);
+        photoDialog.showModal();
+      });
+      galleryGrid.append(button);
+    });
+    galleryLoaded = true;
+    galleryStatus.textContent = galleryPhotos.length
+      ? `${galleryPhotos.length} ${galleryPhotos.length === 1 ? 'photo' : 'photos'} · Select a photo to take a closer look.`
+      : 'Photos coming soon.';
+  } catch {
+    galleryStatus.textContent = 'The photos couldn’t be loaded. Try again in a moment.';
+    galleryRetry.hidden = false;
+  } finally {
+    galleryLoading = false;
+  }
+}
+
+galleryToggle.addEventListener('click', () => {
+  const expanded = galleryToggle.getAttribute('aria-expanded') !== 'true';
+  galleryToggle.setAttribute('aria-expanded', String(expanded));
+  hobbyGallery.hidden = !expanded;
+  if (expanded) loadHobbyGallery();
+});
+galleryRetry.addEventListener('click', loadHobbyGallery);
+document.getElementById('photo-close').addEventListener('click', () => photoDialog.close());
+document.getElementById('photo-previous').addEventListener('click', () => showGalleryPhoto(currentPhoto - 1));
+document.getElementById('photo-next').addEventListener('click', () => showGalleryPhoto(currentPhoto + 1));
+photoDialog.addEventListener('keydown', event => {
+  if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+    event.preventDefault();
+    showGalleryPhoto(currentPhoto + (event.key === 'ArrowRight' ? 1 : -1));
+  }
+});
+photoDialog.addEventListener('click', event => {
+  const rect = photoDialog.getBoundingClientRect();
+  if (event.target === photoDialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) photoDialog.close();
+});
+fullPhoto.addEventListener('error', () => {
+  fullPhoto.hidden = true;
+  photoError.hidden = false;
+});

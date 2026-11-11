@@ -359,3 +359,42 @@ body:has(#skill-dialog[open]) { overflow: hidden; }
   .finance-cluster [data-node='portfolio-construction'] { top: 30%; }
   .finance-cluster { height: 320px; }
 }
+/* A quiet reveal below the hobbies, with no photo requests until it is opened. */
+.gallery-easter-egg { margin-top: 26px; padding-top: 17px; border-top: 1px solid var(--line); }
+.gallery-trigger { display: inline-flex; align-items: center; gap: 9px; border: none; border-radius: 6px; padding: 7px 9px; margin-left: -9px; background: transparent; color: #60718c; font-size: 13px; }
+.gallery-trigger:hover, .gallery-trigger[aria-expanded='true'] { color: var(--blue); background: #eaf0ff; }
+.gallery-trigger svg { width: 17px; height: 17px; }
+.gallery-toggle-mark { display: inline-block; font-size: 18px; margin-left: 4px; transition: transform .18s; }
+.gallery-trigger[aria-expanded='true'] .gallery-toggle-mark { transform: rotate(45deg); }
+.hobby-gallery { margin-top: 19px; }
+.hobby-gallery h3 { font-size: 20px; font-weight: 550; margin-bottom: 5px; }
+#gallery-status { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
+.gallery-thumbnail { display: flex; flex-direction: column; text-align: left; padding: 0; background: white; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; color: var(--ink); transition: border-color .18s, box-shadow .18s; }
+.gallery-thumbnail:hover { border-color: #8faef0; box-shadow: 0 6px 18px #193d7a12; }
+.gallery-thumbnail img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #e9eef8; }
+.gallery-thumbnail > span { padding: 11px 14px; font-size: 13px; overflow-wrap: anywhere; }
+.thumbnail-unavailable::before { content: 'Photo unavailable'; display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3; background: #edf2fa; color: var(--muted); font-size: 13px; }
+.gallery-retry { background: white; color: var(--blue); border: 1px solid #bdcdef; border-radius: 6px; padding: 7px 13px; margin-bottom: 15px; font-size: 13px; }
+.photo-dialog { width: min(1000px, calc(100% - 30px)); max-height: 92dvh; padding: 18px; border: 1px solid #c7d5ed; border-radius: 13px; background: #f8faff; color: var(--ink); box-shadow: 0 20px 90px #101f3f66; }
+.photo-dialog::backdrop { background: #0c182bcc; backdrop-filter: blur(5px); }
+body:has(.photo-dialog[open]) { overflow: hidden; }
+.photo-viewer-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 13px; }
+#photo-position { color: var(--muted); font: 12px/1.6 var(--mono); }
+.photo-dialog figure { margin: 0; }
+#gallery-full-photo { display: block; width: 100%; height: min(65dvh, 650px); object-fit: contain; background: #eaf0f9; border-radius: 6px; }
+#photo-caption { font-size: 14px; margin-top: 12px; overflow-wrap: anywhere; }
+#photo-error { color: var(--muted); padding: 45px 15px; text-align: center; }
+.photo-navigation { display: flex; justify-content: space-between; gap: 15px; margin-top: 16px; }
+.photo-navigation button { border: 1px solid #c6d5ef; border-radius: 6px; padding: 8px 13px; background: white; color: var(--blue); font-size: 13px; }
+.photo-navigation button:hover:not(:disabled) { background: #e7efff; }
+.photo-navigation button:disabled { color: #687b98; background: #edf1f7; opacity: .7; cursor: default; }
+@media (max-width: 600px) {
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+  .gallery-thumbnail > span { padding: 9px 10px; font-size: 12px; }
+  .photo-dialog { padding: 14px; }
+  #gallery-full-photo { height: 56dvh; }
+}
+@media print {
+  .gallery-easter-egg, .photo-dialog { display: none !important; }
+}

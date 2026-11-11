@@ -85,9 +85,9 @@ h2 { font-size: 31px; line-height: 1.3; font-weight: 550; letter-spacing: -.8px;
 .education-card p { font-size: 14px; color: #435b83; }
 .education-meta { margin-top: 5px; }
 .education-meta span { padding-inline: 6px; }
-.education-training { border-left: 1px solid #bdceee; padding-left: 23px; margin-left: auto; }
-.education-training .eyebrow { display: block; margin-bottom: 7px; }
-.education-training p { font-size: 13px; }
+.education-activities { border-left: 1px solid #bdceee; padding-left: 23px; margin-left: auto; }
+.education-activities .eyebrow { display: block; margin-bottom: 7px; }
+.education-activities p { font-size: 13px; }
 .competition-row { display: grid; grid-template-columns: 105px 1fr auto; align-items: baseline; gap: 22px; padding: 19px 0; border-bottom: 1px solid var(--line); }
 .competition-row:first-of-type { border-top: 1px solid var(--line); }
 .competition-row > .mono { font: 12px/1.8 var(--mono); color: var(--muted); }
@@ -195,7 +195,7 @@ body:has(#skill-dialog[open]) { overflow: hidden; }
   .profile-photo-frame { width: 86px; height: 86px; }
   .identity { gap: 16px; }
   .identity .eyebrow { max-width: 300px; }
-  .education-training { max-width: 280px; padding-left: 18px; }
+  .education-activities { max-width: 280px; padding-left: 18px; }
 }
 @media (max-width: 850px) {
   .topbar-inner { flex-wrap: wrap; padding-top: 12px; gap: 8px 20px; }
@@ -209,7 +209,7 @@ body:has(#skill-dialog[open]) { overflow: hidden; }
   .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .section-heading { align-items: flex-start; }
   .education-card { flex-wrap: wrap; }
-  .education-training { max-width: 100%; border-left: 0; border-top: 1px solid #bdceee; padding: 16px 0 0; width: 100%; margin-left: 0; }
+  .education-activities { max-width: 100%; border-left: 0; border-top: 1px solid #bdceee; padding: 16px 0 0; width: 100%; margin-left: 0; }
   .experience-row h3 { max-width: 100%; }
   .date { float: none; margin: 0 0 8px; }
   .competition-row { grid-template-columns: 90px 1fr; gap: 9px 18px; }
@@ -247,7 +247,7 @@ body:has(#skill-dialog[open]) { overflow: hidden; }
   .role, .experience-row ul { font-size: 14px; }
   .education-card { padding: 22px; gap: 16px; }
   .school-mark { width: 48px; height: 48px; font-size: 15px; }
-  .education-card > div:not(.education-training) { flex: 1; min-width: 160px; }
+  .education-card > div:not(.education-activities) { flex: 1; min-width: 160px; }
   .competition-row { grid-template-columns: 1fr auto; gap: 7px 12px; padding-block: 18px; }
   .competition-row > .mono { grid-column: 1 / -1; }
   .competition-row > div { grid-column: 1 / -1; }

@@ -455,7 +455,7 @@ const skillData = {
     },
     "databricks": {
       "title": "Databricks Fundamentals Accreditation",
-      "href": "#education",
+      "href": "Matthew_Ding_Resume_Tech.pdf",
       "description": "Accreditation listed on the technical resume.",
       "type": "Training"
     },
@@ -496,10 +496,14 @@ document.addEventListener('click', event => {
     if (evidence.href) {
       const link = document.createElement('a');
       link.href = evidence.href;
+      if (!evidence.href.startsWith('#')) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
       link.textContent = evidence.title;
       link.addEventListener('click', () => {
         dialog.close();
-        const target = document.querySelector(evidence.href);
+        const target = evidence.href.startsWith('#') ? document.querySelector(evidence.href) : null;
         if (!target) return;
         const details = target.matches('details') ? target : target.querySelector('details');
         if (details) details.open = true;

@@ -1,25 +1,33 @@
 # Hobbies gallery
 
-Add your photos here. Supported formats: JPG, JPEG, PNG, WebP, GIF, and AVIF.
-Subfolders are supported. Hidden files and symbolic links are ignored.
+Upload photos directly into this folder on GitHub and commit to `gh-pages`.
+GitHub Pages automatically generates the photo list during deployment. **You do
+not need to run a command or edit a JSON file.** Allow the normal Pages build to
+finish, then reload the website.
 
-Refresh the photo index from the repository root:
+Supported formats: JPG, JPEG, PNG, WebP, GIF, and AVIF. Subfolders are supported.
+File names become captions: `Michigan-Stadium.jpg` becomes `Michigan Stadium`.
+
+In Hobbies, click **Gallery unlock** and enter **myding**. With no photos, the
+gallery displays a **Coming soon** placeholder. The password prompt is an
+Easter egg only; this repository and its image files are public.
+
+## How it works
+
+`assets/gallery/index.json` is a Jekyll/Liquid template. GitHub Pages fills it
+from `site.static_files` on each build. Keep Jekyll enabled (do not add a
+`.nojekyll` file). No API keys, GitHub API requests, or additional workflows are
+needed.
+
+## Optional local preview
+
+For a plain Python or other static file server, the frontend falls back to
+`photos.json` because those servers do not process Liquid. If you want to
+preview newly added photos locally, run:
 
 ```sh
 python3 scripts/update-gallery.py
 ```
 
-Commit and push the images and generated `assets/gallery/photos.json` together.
-Open **Off the clock** at the bottom of Hobbies to reveal the gallery.
-
-File names become photo captions and alt text. For example,
-`Michigan-Stadium.jpg` displays as `Michigan Stadium`. Edit the generated `alt`
-text in `photos.json` for a more descriptive caption if desired; regenerating the
-index restores captions from file names.
-
-Only add photos you want publicly visible: this is a public website and
-repository. The Easter egg hides the gallery in the interface, not the files.
-
-No photos are included yet. The website displays an empty state until you add
-images and refresh the index. The gallery requires no API keys or external photo
-service.
+That command is only for local preview. Uploading through GitHub requires no
+manual indexing step.

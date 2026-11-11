@@ -1,0 +1,18 @@
+---
+layout: null
+---
+{%- assign extensions = '.jpg,.jpeg,.png,.webp,.gif,.avif' | split: ',' -%}
+{%- assign photos = site.static_files | sort: 'path' -%}
+{%- assign first_photo = true -%}
+[
+{%- for photo in photos -%}
+  {%- assign folder = photo.path | slice: 0, 16 -%}
+  {%- assign extension = photo.extname | downcase -%}
+  {%- if folder == '/assets/gallery/' and extensions contains extension -%}
+    {%- assign caption = photo.basename | replace: '-', ' ' | replace: '_', ' ' -%}
+    {%- unless first_photo -%},{%- endunless -%}
+    {"src":{{ photo.path | relative_url | jsonify }},"alt":{{ caption | jsonify }}}
+    {%- assign first_photo = false -%}
+  {%- endif -%}
+{%- endfor -%}
+]

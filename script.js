@@ -618,6 +618,12 @@ document.fonts.ready.then(drawSkillConnections);
 // A folder-backed, lazy-loaded Easter egg at the end of Hobbies.
 const galleryToggle = document.getElementById('gallery-toggle');
 const hobbyGallery = document.getElementById('hobby-gallery');
+const galleryPanel = document.getElementById('gallery-panel');
+const galleryUnlockForm = document.getElementById('gallery-unlock-form');
+const galleryPassword = document.getElementById('gallery-password');
+const galleryUnlockMessage = document.getElementById('gallery-unlock-message');
+const galleryEmpty = document.getElementById('gallery-empty');
+let galleryUnlocked = false;
 const galleryGrid = document.getElementById('gallery-grid');
 const galleryStatus = document.getElementById('gallery-status');
 const galleryRetry = document.getElementById('gallery-retry');
@@ -648,11 +654,23 @@ async function loadHobbyGallery() {
   galleryLoading = true;
   galleryRetry.hidden = true;
   galleryStatus.textContent = 'Loading photos…';
+  galleryEmpty.hidden = true;
   try {
-    const response = await fetch('assets/gallery/photos.json', {cache: 'no-cache'});
-    if (!response.ok) throw new Error('Photo index unavailable');
-    const entries = await response.json();
-    if (!Array.isArray(entries)) throw new Error('Invalid photo index');
+    async function fetchPhotoIndex(path) {
+      const response = await fetch(path, {cache: 'no-cache'});
+      if (!response.ok) throw new Error('Photo index unavailable');
+      const entries = await response.json();
+      if (!Array.isArray(entries)) throw new Error('Invalid photo index');
+      return entries;
+    }
+    let entries;
+    try {
+      // Jekyll generates this list automatically on every GitHub Pages build.
+      entries = await fetchPhotoIndex('assets/gallery/index.json');
+    } catch {
+      // A plain local server does not render Liquid; use its optional local index.
+      entries = await fetchPhotoIndex('assets/gallery/photos.json');
+    }
     const folder = new URL('assets/gallery/', document.baseURI);
     galleryPhotos = entries.flatMap(entry => {
       if (!entry || typeof entry.src !== 'string' || typeof entry.alt !== 'string') return [];
@@ -686,7 +704,8 @@ async function loadHobbyGallery() {
     galleryLoaded = true;
     galleryStatus.textContent = galleryPhotos.length
       ? `${galleryPhotos.length} ${galleryPhotos.length === 1 ? 'photo' : 'photos'} · Select a photo to take a closer look.`
-      : 'Photos coming soon.';
+      : '';
+    galleryEmpty.hidden = galleryPhotos.length !== 0;
   } catch {
     galleryStatus.textContent = 'The photos couldn’t be loaded. Try again in a moment.';
     galleryRetry.hidden = false;
@@ -698,8 +717,28 @@ async function loadHobbyGallery() {
 galleryToggle.addEventListener('click', () => {
   const expanded = galleryToggle.getAttribute('aria-expanded') !== 'true';
   galleryToggle.setAttribute('aria-expanded', String(expanded));
-  hobbyGallery.hidden = !expanded;
-  if (expanded) loadHobbyGallery();
+  galleryPanel.hidden = !expanded;
+  if (expanded && galleryUnlocked) loadHobbyGallery();
+  else if (expanded) galleryPassword.focus();
+});
+galleryUnlockForm.addEventListener('submit', event => {
+  event.preventDefault();
+  // This is an Easter egg, not access control for the public image files.
+  if (galleryPassword.value !== 'myding') {
+    galleryUnlockMessage.textContent = 'That password isn’t right. Try again.';
+    galleryPassword.setAttribute('aria-invalid', 'true');
+    galleryPassword.focus();
+    galleryPassword.select();
+    return;
+  }
+  galleryUnlocked = true;
+  galleryPassword.value = '';
+  galleryPassword.removeAttribute('aria-invalid');
+  galleryUnlockMessage.textContent = '';
+  galleryUnlockForm.hidden = true;
+  hobbyGallery.hidden = false;
+  document.getElementById('gallery-heading').focus();
+  loadHobbyGallery();
 });
 galleryRetry.addEventListener('click', loadHobbyGallery);
 document.getElementById('photo-close').addEventListener('click', () => photoDialog.close());

@@ -398,3 +398,19 @@ body:has(.photo-dialog[open]) { overflow: hidden; }
 @media print {
   .gallery-easter-egg, .photo-dialog { display: none !important; }
 }
+.gallery-unlock-form { margin-top: 18px; padding: 20px; max-width: 460px; border: 1px solid var(--line); border-radius: 9px; background: white; }
+.gallery-unlock-form label { display: block; margin-bottom: 8px; font-size: 14px; color: var(--ink); }
+.gallery-password-row { display: flex; gap: 9px; }
+.gallery-password-row input { width: 100%; min-width: 0; border: 1px solid #b7c9e8; border-radius: 6px; padding: 8px 10px; font-size: 15px; }
+.gallery-password-row input[aria-invalid='true'] { border-color: #a73838; }
+.gallery-password-row button { flex-shrink: 0; background: var(--blue); border: 1px solid var(--blue); border-radius: 6px; padding: 8px 13px; color: white; font-size: 13px; }
+#gallery-unlock-message { font-size: 13px; color: #943838; margin-top: 8px; }
+#gallery-unlock-message:empty { margin: 0; }
+.gallery-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 180px; padding: 28px; border: 1px dashed #bacbeb; border-radius: 12px; background: #edf3ff; color: #3c5582; text-align: center; }
+.gallery-empty svg { width: 32px; height: 32px; margin-bottom: 4px; }
+.gallery-empty strong { color: #284a91; font-size: 19px; font-weight: 550; }
+.gallery-empty p { font-size: 14px; }
+@media (max-width: 390px) {
+  .gallery-password-row { flex-wrap: wrap; }
+  .gallery-password-row button { width: 100%; }
+}

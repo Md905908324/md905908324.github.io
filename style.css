@@ -291,3 +291,14 @@ body:has(#skill-dialog[open]) { overflow: hidden; }
   .project-card, .archive-project { margin-bottom: 15px; }
   a { color: #111; }
 }
+/* Work history supports the portfolio without duplicating the resume. */
+.career-links { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+.experience-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.experience-grid .experience-row { padding: 23px; margin-bottom: 0; }
+.experience-grid .date { float: none; margin: 0 0 12px; }
+.experience-grid h3 { max-width: 100%; font-size: 17px; }
+.experience-grid .role { margin-top: 8px; font-size: 13px; }
+.experience-summary { font-size: 14px; color: var(--muted); margin-top: 14px; }
+@media (max-width: 850px) {
+  .experience-grid { grid-template-columns: 1fr; }
+}

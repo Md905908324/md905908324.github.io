@@ -151,27 +151,6 @@ const skillData = {
         "lfgcampus"
       ]
     },
-    "tailwind-css": {
-      "name": "Tailwind CSS",
-      "evidence": [
-        "amparo",
-        "anchor"
-      ]
-    },
-    "typescript": {
-      "name": "TypeScript",
-      "evidence": [
-        "ghostly",
-        "anchor",
-        "lfg"
-      ]
-    },
-    "vite": {
-      "name": "Vite",
-      "evidence": [
-        "ghostly"
-      ]
-    },
     "scikit-learn": {
       "name": "scikit-learn",
       "evidence": [
@@ -258,28 +237,10 @@ const skillData = {
         "ungate"
       ]
     },
-    "html": {
-      "name": "HTML",
-      "evidence": [
-        "portfolio"
-      ]
-    },
-    "css": {
-      "name": "CSS",
-      "evidence": [
-        "portfolio"
-      ]
-    },
     "git": {
       "name": "Git",
       "evidence": [
-        "portfolio"
-      ]
-    },
-    "github-pages": {
-      "name": "GitHub Pages",
-      "evidence": [
-        "portfolio"
+        "git-repositories"
       ]
     },
     "salesforce": {
@@ -423,12 +384,6 @@ const skillData = {
       "description": "Explore a marketplace for niche expertise and information that is difficult to access.",
       "type": "Project"
     },
-    "portfolio": {
-      "title": "Portfolio website",
-      "href": "#project-portfolio",
-      "description": "Build a responsive static portfolio presenting technical projects, experience, and competitions.",
-      "type": "Project"
-    },
     "omb": {
       "title": "NYC Office of Management and Budget",
       "href": "#experience-omb",
@@ -469,6 +424,12 @@ const skillData = {
       "href": "#project-omb-forecast",
       "description": "NYC OMB revenue analysis, five-stage data pipeline, and monthly tax-collection forecasting.",
       "type": "Professional work"
+    },
+    "git-repositories": {
+      "title": "Public GitHub repositories",
+      "href": "https://github.com/Md905908324",
+      "description": "Version-controlled source code for the linked projects is available on GitHub.",
+      "type": "Code"
     }
   }
 };

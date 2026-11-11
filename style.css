@@ -149,12 +149,10 @@ sup a { text-decoration: none; }
 .skill-group-number { position: absolute; top: 27px; right: 25px; font: 12px/1.6 var(--mono); color: #637a9d; }
 .skill-group h3 { font-size: 24px; font-weight: 550; }
 .skill-group > p { color: var(--muted); font-size: 14px; margin-top: 5px; }
-.skills-list { padding-left: 17px; margin-top: 21px; }
-.skills-list > li { margin-bottom: 16px; color: #4c6a9c; padding-left: 2px; }
+.skills-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 22px; padding-left: 17px; margin-top: 21px; }
+.skills-list > li { margin-bottom: 0; color: #4c6a9c; padding-left: 2px; }
 .skills-list .skill-tag { background: transparent; border: none; font: 15px/1.6 var(--sans); padding: 0; font-weight: 500; color: #1c49a4; }
 .skills-list .skill-tag:hover { text-decoration: underline; text-underline-offset: 3px; }
-.skill-support { display: block; color: var(--muted); font-size: 13px; line-height: 1.7; margin-top: 3px; }
-.skill-support a { color: #465e85; }
 .hobbies-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
 .hobbies-grid > div { border-top: 1px solid var(--line); padding-top: 15px; }
 .hobbies-grid h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }

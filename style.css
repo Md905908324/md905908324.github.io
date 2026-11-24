@@ -462,3 +462,5 @@ body:has(.photo-dialog[open]) { overflow: hidden; }
   .archive-project { grid-row-end: auto !important; }
   .course-filters { display: none; }
 }
+
+.course-status.planned { color: #354c83; background: #e8edfc; padding-inline: 5px; border-radius: 4px; }
